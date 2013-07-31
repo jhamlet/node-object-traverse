@@ -1,0 +1,32 @@
+{
+    "name": "jaunt",
+    "description": "Quickly travel object tree structures",
+    "version": "0.1.0",
+    "keywords": ["traverse", "walk", "tree", "json", "object"],
+    "main": "./node_modules/jaunt/index.js",
+    "dependencies": {
+        "protean":   "0.1.x"
+    },
+    "devDependencies": {
+        "mocha":    "1.7.x",
+        "should":   "1.2.x",
+        "sake":     "0.1.x",
+        "ejs":      "0.8.x"
+    },
+    "bundledDependencies": [
+        "jaunt"
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://github.com/jhamlet/node-jaunt/raw/master/LICENSE"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/jhamlet/node-jaunt.git"
+    },
+    "bugs": {
+        "url": "http://github.com/jhamlet/node-jaunt/issues"
+    }
+}

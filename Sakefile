@@ -1,0 +1,38 @@
+/*globals FileList, CLEAN, CLOBBER, desc, task, directory, write, fileSync, log, sh, read */
+
+require('sake/clobber');
+
+function getPackageInfo () {
+    return JSON.parse(read('package.json', 'utf8'));
+}
+
+desc('Generate the README.md documentation');
+fileSync(
+    'README.md',
+    ['src/tmpl/README.ejs', 'package.json', 'Sakefile'],
+    function (t) {
+        var ejs = require('ejs'),
+            pkgInfo = getPackageInfo(),
+            tmpl = ejs.compile(read(t.prerequisites[0], 'utf8')),
+            tmplParams = {
+                pkg: pkgInfo,
+                license: read('./LICENSE', 'utf8')
+            }
+        ;
+        
+        write(t.name, tmpl(tmplParams), 'utf8');
+        log.info(t.name + ' generated');
+    }
+);
+
+CLEAN.include('README.md');
+
+taskSync('git version', function (t) {
+    var pkgInfo = getPackageInfo(),
+        version = pkgInfo.version;
+    
+    sh('');
+});
+
+task('build', ['README.md']);
+task('default', ['build']);
