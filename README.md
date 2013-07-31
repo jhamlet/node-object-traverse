@@ -1,7 +1,7 @@
-Tour
-====
+Jaunt
+=====
 
-> Visit object trees.
+> Quickly travel object tree structures
 
 
 Summary
@@ -12,13 +12,13 @@ Installation
 ------------
 
 ~~~
-% npm install tour
+% npm install jaunt
 ~~~
 
 
 ### Dependencies ###
 
-These are installed when **tour** is installed.
+These are installed when **jaunt** is installed.
 
 ~~~
 protean: 0.1.x
@@ -40,7 +40,7 @@ ejs:    0.8.x
 Report an Issue
 ---------------
 
-* [Bugs](http://github.com/jhamlet/node-tour/issues)
+* [Bugs](http://github.com/jhamlet/node-jaunt/issues)
 * Contact the author: <jerry@hamletink.com>
 
 
