@@ -2,7 +2,7 @@
     "name": "objt",
     "fullname": "ObjectTraverse",
     "description": "Traverse arbitrary object structures",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "keywords": ["traverse", "walk", "tree", "json", "object"],
     "main": "./node_modules/objt/index.js",
     "dependencies": {
