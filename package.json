@@ -1,9 +1,10 @@
 {
-    "name": "jaunt",
-    "description": "Quickly travel object tree structures",
+    "name": "objt",
+    "fullname": "ObjectTraverse",
+    "description": "Traverse arbitrary object structures",
     "version": "0.1.0",
     "keywords": ["traverse", "walk", "tree", "json", "object"],
-    "main": "./node_modules/jaunt/index.js",
+    "main": "./node_modules/objt/index.js",
     "dependencies": {
         "protean":   "0.1.x"
     },
@@ -14,19 +15,19 @@
         "ejs":      "0.8.x"
     },
     "bundledDependencies": [
-        "jaunt"
+        "objt"
     ],
     "licenses": [
         {
             "type": "MIT",
-            "url": "http://github.com/jhamlet/node-jaunt/raw/master/LICENSE"
+            "url": "http://github.com/jhamlet/node-object-traverse/raw/master/LICENSE"
         }
     ],
     "repository": {
         "type": "git",
-        "url": "http://github.com/jhamlet/node-jaunt.git"
+        "url": "http://github.com/jhamlet/node-object-traverse.git"
     },
     "bugs": {
-        "url": "http://github.com/jhamlet/node-jaunt/issues"
+        "url": "http://github.com/jhamlet/node-object-traverse/issues"
     }
 }

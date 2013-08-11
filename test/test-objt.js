@@ -1,22 +1,22 @@
 /*globals describe, it, before, after, beforeEach, afterEach */
 
 var should = require('should'),
-    Jaunt = require('jaunt');
+    ObjectTraverse = require('objt');
 
-describe('Jaunt', function () {
+describe('ObjectTraverse', function () {
     
     describe('#walk()', function () {
         it('should throw an error if not given a subject', function () {
-            var jaunt = new Jaunt();
+            var objt = new ObjectTraverse();
             (function () {
-                jaunt.walk();
+                objt.walk();
             }).should.throw();
         });
         
         it('should traverse in the correct order', function () {
             var traversal = [],
                 opts = {
-                    enter: function (pathCursor, jaunt) {
+                    enter: function (pathCursor, objt) {
                         traversal.push(
                             'enter: ' +
                             pathCursor.
@@ -27,7 +27,7 @@ describe('Jaunt', function () {
                                 }).join(' -> ')
                         );
                     },
-                    leave: function (pathCursor, jaunt) {
+                    leave: function (pathCursor, objt) {
                         traversal.push(
                             'leave: ' +
                             pathCursor.
@@ -39,9 +39,9 @@ describe('Jaunt', function () {
                         );
                     }
                 },
-                jaunt = new Jaunt(opts);
+                objt = new ObjectTraverse(opts);
                 
-            jaunt.walk({
+            objt.walk({
                 name: 'foo',
                 body: [
                     {
@@ -101,8 +101,8 @@ describe('Jaunt', function () {
     describe('#getChildKeys()', function () {
 
         it('should only return child keys if given an array of child keys', function () {
-            var jaunt = new Jaunt({ childKeys: ['foo', 'bar'] }),
-                keys = jaunt.getChildKeys({ foo: 'foo', bar: 'bar', baz: 'baz' });
+            var objt = new ObjectTraverse({ childKeys: ['foo', 'bar'] }),
+                keys = objt.getChildKeys({ foo: 'foo', bar: 'bar', baz: 'baz' });
 
             keys.should.include('foo');
             keys.should.include('bar');
@@ -110,7 +110,7 @@ describe('Jaunt', function () {
         });
 
         it('should only return keys defined by typeKey', function () {
-            var jaunt = new Jaunt({
+            var objt = new ObjectTraverse({
                     typeKey: 'type',
                     childKeys: {
                         foo: ['bar', 'baz']
@@ -122,7 +122,7 @@ describe('Jaunt', function () {
                     baz: ['c', 'd'],
                     fuz: 'fuz'
                 },
-                keys = jaunt.getChildKeys(node);
+                keys = objt.getChildKeys(node);
 
             keys.should.include('bar');
             keys.should.include('baz');
@@ -130,9 +130,9 @@ describe('Jaunt', function () {
         });
 
         it('should return all an objects keys if childKeys are not defined', function () {
-            var jaunt = new Jaunt(),
+            var objt = new ObjectTraverse(),
                 node = { foo: 'foo', bar: 'bar' },
-                keys = jaunt.getChildKeys(node);
+                keys = objt.getChildKeys(node);
 
             keys.should.include('foo');
             keys.should.include('bar');
@@ -143,7 +143,7 @@ describe('Jaunt', function () {
     describe('#getAllChildren()', function () {
 
         it('should, if given an array for childKeys, only return those nodes', function () {
-            var jaunt = new Jaunt({ childKeys: ['foo', 'bar'] }),
+            var objt = new ObjectTraverse({ childKeys: ['foo', 'bar'] }),
                 node = {
                     foo: [
                         { name: 'a' },
@@ -155,7 +155,7 @@ describe('Jaunt', function () {
                     ],
                     fuz: 'fuz'
                 },
-                children = jaunt.getAllChildren(node);
+                children = objt.getAllChildren(node);
 
             children[0].should.equal(node.foo[0]);
             children[1].should.equal(node.foo[1]);
@@ -165,7 +165,7 @@ describe('Jaunt', function () {
         });
 
         it('should, if given a typeKey and childKeys map, only return those nodes', function () {
-            var jaunt = new Jaunt({
+            var objt = new ObjectTraverse({
                     typeKey: 'type',
                     childKeys: {
                         foo: ['bar', 'baz']
@@ -183,7 +183,7 @@ describe('Jaunt', function () {
                     ],
                     fuz: 'fuz'
                 },
-                children = jaunt.getAllChildren(node);
+                children = objt.getAllChildren(node);
 
             children[0].should.equal(node.bar[0]);
             children[1].should.equal(node.bar[1]);
@@ -197,21 +197,21 @@ describe('Jaunt', function () {
     describe('#getChildren()', function () {
 
         it('should return a child node when given a key', function () {
-            var jaunt = new Jaunt({ childKeys: ['foo'] }),
+            var objt = new ObjectTraverse({ childKeys: ['foo'] }),
                 node = {
                     foo: [{ name: 'a' }],
                     bar: [{ name: 'b' }]
                 },
-                children = jaunt.getChildren(node, 'foo');
+                children = objt.getChildren(node, 'foo');
 
             children[0].name.should.equal('a');
             children.length.should.equal(1);
         });
 
         it('should not return anything if given a key that is not in childKeys', function () {
-            var jaunt = new Jaunt({ childKeys: ['foo'] }),
+            var objt = new ObjectTraverse({ childKeys: ['foo'] }),
                 node = { foo: ['a'], bar: ['b'] },
-                children = jaunt.getChildren(node, 'bar');
+                children = objt.getChildren(node, 'bar');
 
             children.length.should.equal(0);
         });

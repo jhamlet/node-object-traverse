@@ -1,7 +1,7 @@
-Jaunt
-=====
+ObjectTraverse
+==============
 
-> Quickly travel object tree structures
+> Traverse arbitrary object structures
 
 
 Summary
@@ -12,13 +12,13 @@ Installation
 ------------
 
 ~~~
-% npm install jaunt
+% npm install objt
 ~~~
 
 
 ### Dependencies ###
 
-These are installed when **jaunt** is installed.
+These are installed when **objt** is installed.
 
 ~~~
 protean: 0.1.x
@@ -40,7 +40,7 @@ ejs:    0.8.x
 Report an Issue
 ---------------
 
-* [Bugs](http://github.com/jhamlet/node-jaunt/issues)
+* [Bugs](http://github.com/jhamlet/node-object-traverse/issues)
 * Contact the author: <jerry@hamletink.com>
 
 
