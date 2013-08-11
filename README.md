@@ -18,7 +18,7 @@ Installation
 
 ### Dependencies ###
 
-These are installed when **objt** is installed.
+These are installed when **ObjectTraverse** is installed.
 
 ~~~
 protean: 0.1.x
